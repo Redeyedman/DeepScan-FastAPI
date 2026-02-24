@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DeepScan AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🏗️ DeepScan AI</h1>
+    <p class="subtitle">AI-Powered Concrete Crack Detection System</p>
+
+    <form action="/predict" method="post" enctype="multipart/form-data" class="card">
+        <label class="upload-box">
+            <input type="file" name="file" accept="image/*" required onchange="previewImage(event)">
+            <span>📤 Click or Drop Image Here</span>
+        </label>
+
+        <!-- Image Preview -->
+        <img id="preview" class="preview-img" style="display:none;" />
+
+        <button type="submit" class="btn">Analyze Structure</button>
+    </form>
+
+    {% if result %}
+    <div class="result-card">
+        <h2>Status:
+            <span class="{{ 'bad' if result=='Cracked' else 'good' }}">
+                {{ result }}
+            </span>
+        </h2>
+
+        <div class="badges">
+            <span class="badge">Severity: {{ severity }}</span>
+            <span class="badge">Orientation: {{ orientation }}</span>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<footer>
+    © 2026 DeepScan AI | Structural Inspection System
+</footer>
+
+<script>
+function previewImage(event) {
+    const img = document.getElementById('preview');
+    img.src = URL.createObjectURL(event.target.files[0]);
+    img.style.display = 'block';
+}
+</script>
+
+</body>
+</html>
