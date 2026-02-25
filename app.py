@@ -109,7 +109,7 @@ with st.sidebar:
     st.divider()
     st.caption("Instructions: Upload clear top-down images of concrete surfaces for best accuracy.")
 
-st.title("🏗️ DeepScan Pro: Structural Integrity AI")
+st.title("🏗️ AI-assisted Building Crack Detector")
 st.markdown("---")
 
 col_left, col_right = st.columns([1, 1])
